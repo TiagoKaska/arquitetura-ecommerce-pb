@@ -1,0 +1,29 @@
+# Overview
+
+* [**Overview**](/docs/README.md)
+  * [1 Meu Ecommerce](/docs/1%20Meu%20Ecommerce/README.md)
+  * [Omnichannel](/docs/Omnichannel/README.md)
+
+---
+
+- [1 Meu Ecommerce](/docs/1%20Meu%20Ecommerce/README.md)
+
+- [Omnichannel](/docs/Omnichannel/README.md)
+
+---
+
+![diagram](https://www.plantuml.com/plantuml/svg/0/RLFBRjj03BmRy3-mFZc0QbrwoYb6AYH1xSIeRGGz6Qp4M8jAItKVVdnEqKE10Zts2_nZvKhoGqQXWxHBSZWpfEwiG-DyMS2KF2GfboMPbFgzTqgdXSy8SkSgUnl71hUZjNAv_-gjfB1sfDr82cBCZ4AzANpbu_iFxsS5QhUSJk827LadLwlxaBrpeqeQzNlztcJyvMMvMBq-BHvNa-GXUVuul0dtCpAMzT1RZqPn18EbzOSVyZa8toNuzXY1ogIxUbCfPWpiGHz-Cdpt19YIjGWCTDGo6WZsV6yTbSDmAL0ThG5xha8OGVIUwiB1iA_GNY9mgPKKlCWhpL5hAaAz2DoGMHz-wrJLA2bgL1O4IwWSQGFjRc6RexDOHI3zL161BIsGIozwh9AT6w9tkG2FVR1PP1v-1OMjFeRX9zgd1UEtcqlwmO0m6SC5WZpTuepjYOhqX3KPgldo4HN_RrjDgCArT7gGcMvn7oJES8sbuFELWTNflWlmPj1dtTIIjN9i6ilgEDb1lGcVgJYlGJkrfSKG3A5c2kSzQVoNkNSD3ynU7yUB-NWMpQVpA9cEdoP7Z0QrdMUYDy92SxDJujVVXiavyNeWPokxUOrF3Tx9YbDE7JqwCMtaIvxXPW3NzeMIDhiruRcb21LRU_Yp8Tco2-VkI6VjJzRl_GC0)
+
+**Contexto do sistema**
+
+Visão geral do sistema Meu Ecommerce
+
+O Sistema terá 2 sistemas que serão desenvolvidos 
+- Meu Ecommerce
+- OmniChanel
+
+Os sistemas em cinza são aplicações que já existem.
+- Autenticação e Acesso 
+
+Para controle de autenticação e acesso será usado o [keycloak](https://www.keycloak.org/)
+

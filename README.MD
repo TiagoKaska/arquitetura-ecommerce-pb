@@ -1,4 +1,5 @@
 # arquitetura-ecommerce
+Para esse projeto foi usado o [C4Model](https://c4model.com/)
 
 # Introduction
 
