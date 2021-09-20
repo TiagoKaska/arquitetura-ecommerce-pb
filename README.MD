@@ -1,5 +1,11 @@
 # arquitetura-ecommerce
 Para esse projeto foi usado o [C4Model](https://c4model.com/)
+Na pasta docs contêm os arquivos gerados.
+- arquitetura-ecommerce.md
+- arquitetura-ecommerce.pdf
+- index.html
+
+Na pasta src contêm os arquivos com a notação startuml para versionamento.
 
 # Introduction
 
