@@ -1,0 +1,22 @@
+@startuml Meu Ecommerce
+!include https://raw.githubusercontent.com/adrianvlupu/C4-PlantUML/latest/C4_Context.puml
+
+LAYOUT_WITH_LEGEND()
+
+Person(usuario, "Usuário", "Um usuário, identificado ou não que acessa o ecommerce.")
+System(ecom, "Meu Ecommerce", "Sistema de ecommerce de roupas.")
+System(omni, "Omnichannel", "Convergência de canais com o usuário ex: whatsap, email, sms etc.")
+System_Ext(auth, "Autenticação e acesso (Keycloak)", "Sistema que controla a autenticação dos usuários e gerencia o acesso ao ecommerce.")
+System_Ext(pag, "Gateway de Pagamento", "Sistema de pagamento")
+System_Ext(fraud, "Sistema de monitoria de fraudes")
+
+Rel(usuario, ecom, "Usa")
+Rel(omni, usuario, "Conversa com o usuário", "WHATSAP,SMS,EMAIL")
+Rel(ecom, omni, "Envia notificações")
+Rel(ecom, auth, "Autentica usuários")
+Rel(ecom, pag, "Envia pagamentos")
+Rel(pag, fraud, "Monitora processo de pagamento")
+Rel(fraud, ecom, "Notifica possíveis fraudes")
+@enduml
+
+

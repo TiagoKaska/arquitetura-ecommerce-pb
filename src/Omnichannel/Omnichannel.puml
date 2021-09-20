@@ -1,0 +1,30 @@
+@startuml OmniChannel
+!include https://raw.githubusercontent.com/adrianvlupu/C4-PlantUML/latest/C4_Container.puml
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+!include DEVICONS/angular.puml
+!include DEVICONS/java.puml
+!include FONTAWESOME/users.puml
+
+LAYOUT_WITH_LEGEND()
+
+Person(usuario, "Usuário", "Um usuário, identificado ou não que acessa o ecommerce.", "users")
+System(ecom, "Meu Ecommerce", "Sistema de Ecommerce")
+
+System_Boundary(omni, "OmniChanel"){
+    System(wha, "Microserviço Whatsap", "Whatsap")    
+    System(sms, "Microserviço Sms", "SMS")  
+    System(mes, "Microserviço Messenger", "MESSENGER")  
+    System(web, "Microserviço de chat pelo navegador", "Web Chat")  
+}
+
+Rel(usuario, ecom, "Consome", "HTTPS")
+
+Rel(ecom, omni, "Envia Notificações", "rabbitmq")
+Rel(omni, usuario, "Comunica com o usuário", "Chat Web, SMS, WHATSAP, MESSENGER")
+Rel(wha, usuario, "Conversa com o usuário pelo whatsap", "Whatsap")
+Rel(sms, usuario, "Conversa com o usuário por sms", "sms")
+Rel(mes, usuario, "Conversa com o usuário pelo Facebook Messenger", "messenger")
+Rel(web, usuario, "Conversa com o usuário pelo Web Chat", "chat")
+
+@enduml

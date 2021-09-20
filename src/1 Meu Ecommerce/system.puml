@@ -1,0 +1,46 @@
+@startuml Meu Ecommerce
+!include https://raw.githubusercontent.com/adrianvlupu/C4-PlantUML/latest/C4_Container.puml
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+!include DEVICONS/angular.puml
+!include DEVICONS/java.puml
+!include FONTAWESOME/users.puml
+
+LAYOUT_WITH_LEGEND()
+
+Person(usuario, "Usuário", "Um usuário, identificado ou não que acessa o ecommerce.", "users")
+
+System_Ext(auth, "Autenticação e acesso (Keycloak)", "Sistema que controla a autenticação dos usuários e gerencia o acesso ao ecommerce.", "Keycloak")
+System_Ext(pag, "Gateway de Pagamento", "Sistema de pagamento")
+System(omni, "Omnichannel", "Convergência de canais com o usuário ex: whatsap, email, sms etc.")
+System_Ext(fraud, "Sistema de monitoria de fraudes")
+System_Boundary(ibs, "Meu Ecommerce") {
+    Container(spa, "Single Page Application", "javascript, angular", "Aplicação front-end.", "angular")
+    Container(api, "Api", "Java, Quarkus", "api para consumo do front-end", "java")
+    Container(sto, "Stock Service", "Java, Quarkus", "Sistema de gerênciamento de estoque", "java")
+    Container(ful, "Fulfilment Service", "Java, Quarkus", "Serviço de atendimento de Pedidos", "java")
+    ContainerDb(db, "Database", "Postgres", "Armazena informações de estoque")
+    ContainerDb(db2, "Database", "MongoDB", "Armazena informações de pedidos")
+    ContainerDb(db3, "Database", "Redis", "Armazena informações para o front-end")
+}
+
+Rel(usuario, spa, "1-Acessa o Ecommerce", "HTTPS")
+
+Rel(spa, api, "2 - Consulta dados para o Front-end")
+Rel(spa, auth, "SSO LOGIN", "KEYCLOAK")
+Rel(api, ful, "3 - Consulta o Fulfilment Service")
+Rel(ful, sto, "4- Consulta o Estoque")
+
+Rel(api, db3, "Consulta informações para o front-end")
+Rel(ful, db2, "Consulta informações de pedidos e cria novos pedidos")
+Rel(sto, db, "Consulta informações de estoque e atualiza o estoque")
+Rel(ibs, omni, "Envia notificações")
+Rel(ful, pag, "Chama gateway de pagamento", "HTTPS")
+Rel(pag, fraud, "Consulta Sistema de Fraudes", "HTPPS")
+Rel(fraud, ibs, "Notifica possíveis fraudes")
+Rel(omni, usuario, "Envia mensagens para o usuário", "whatsap, chat web, sms, messenger, email")
+Rel(ibs, auth, "Consulta validade de tokens", "OpenID")
+
+@enduml
+
+
